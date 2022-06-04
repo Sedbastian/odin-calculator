@@ -28,7 +28,7 @@ function ejecutarIgual() {
 }
 
 const display = document.querySelector("#display");
-const digitos = document.querySelectorAll(".digitos div");
+const digitos = document.querySelectorAll(".digitos button");
 digitos.forEach((digito) => digito.addEventListener("click", popularDisplay));
 
 const operaciones = document.querySelectorAll(".operacion");
