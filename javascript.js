@@ -70,6 +70,15 @@ function ejecutarBorrar () {
     display.textContent = "_";
 };
 
+function ejecutarBackspace () {
+    auxiliarOperando = auxiliarOperando.slice(0, auxiliarOperando.length - 1);
+    if (auxiliarOperando === "") {
+        display.textContent = "_";
+        return;
+    };
+    display.textContent = auxiliarOperando;
+};
+
 const display = document.querySelector("#display");
 const digitos = document.querySelectorAll(".digitos button");
 const punto = document.querySelector("#punto");
@@ -86,3 +95,6 @@ borrarTodo.addEventListener("click", ejecutarBorrarTodo);
 
 const borrar = document.querySelector("#borrar");
 borrar.addEventListener("click", ejecutarBorrar);
+
+const backspace = document.querySelector("#backspace");
+backspace.addEventListener("click", ejecutarBackspace);
