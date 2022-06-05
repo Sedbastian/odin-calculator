@@ -3,18 +3,18 @@ let operacionElegida = "";
 let primerOperando = "";
 let resultado;
 
-function popularDisplay(event) {
+function popularDisplay (event) {
     auxiliarOperando = `${auxiliarOperando}` + `${event.target.textContent}`;
     display.textContent = auxiliarOperando;
 }
 
-function elegirOperacion(event) {
+function elegirOperacion (event) {
     operacionElegida = `${event.target.textContent}`;
     primerOperando = auxiliarOperando;
     auxiliarOperando = "";
 }
 
-function ejecutarIgual() {
+function ejecutarIgual () {
     if (operacionElegida === "+") {
         resultado = parseFloat(primerOperando) + parseFloat(auxiliarOperando);
     } else if (operacionElegida ==="-") {
@@ -27,6 +27,17 @@ function ejecutarIgual() {
     display.textContent = `${resultado}`;
 }
 
+function ejecutarBorrarTodo () {
+    auxiliarOperando = "";
+    primerOperando = "";
+    operacionElegida = "";
+}
+
+function ejecutarBorrar () {
+    auxiliarOperando = "";
+    display.textContent = "_";
+}
+
 const display = document.querySelector("#display");
 const digitos = document.querySelectorAll(".digitos button");
 digitos.forEach((digito) => digito.addEventListener("click", popularDisplay));
@@ -36,3 +47,9 @@ operaciones.forEach((operacion) => operacion.addEventListener("click", elegirOpe
 
 const igual = document.querySelector("#igual");
 igual.addEventListener("click", ejecutarIgual);
+
+const borrarTodo = document.querySelector("#borrarTodo");
+borrarTodo.addEventListener("click", ejecutarBorrarTodo);
+
+const borrar = document.querySelector("#borrar");
+borrar.addEventListener("click", ejecutarBorrar);
