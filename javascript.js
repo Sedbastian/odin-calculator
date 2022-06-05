@@ -3,19 +3,19 @@ let operacionElegida = "";
 let primerOperando = "";
 let resultado;
 
-function popularDisplay (event) {
+function popularDisplay (digitoParaAgregar) {
     if (punto.disabled === true) {
         digitos.forEach ((numero) => numero.disabled = true);
     };
-    if (event.target.textContent === ".") {
+    if (digitoParaAgregar === ".") {
         punto.disabled = true;
     };
-    auxiliarOperando = `${auxiliarOperando}` + `${event.target.textContent}`;
+    auxiliarOperando = `${auxiliarOperando}` + `${digitoParaAgregar}`;
     display.textContent = auxiliarOperando;
     
 };
 
-function elegirOperacion (event) {
+function elegirOperacion (operacionParaElegir) {
     if (punto.disabled === true) {
         punto.disabled = false;
         digitos.forEach ((numero) => numero.disabled = false)
@@ -23,11 +23,11 @@ function elegirOperacion (event) {
     if (auxiliarOperando !== "" && primerOperando !== "") {
         ejecutarIgual();
         primerOperando = `${resultado}`;
-        operacionElegida = `${event.target.textContent}`;
+        operacionElegida = `${operacionParaElegir}`;
         auxiliarOperando = "";
         return;
     };
-    operacionElegida = `${event.target.textContent}`;
+    operacionElegida = `${operacionParaElegir}`;
     // Si primerOperando === "" es xq no se quiere operar sobre un resultado previo.
     if (primerOperando === "") {
         primerOperando = auxiliarOperando;
@@ -55,7 +55,12 @@ function ejecutarIgual () {
     auxiliarOperando = "";
     resultado = resultado.toFixed(2);
     primerOperando = `${resultado}`;
+    operacionElegida = "";
     display.textContent = `${resultado}`;
+    if (punto.disabled === true) {
+        punto.disabled = false;
+        digitos.forEach ((numero) => numero.disabled = false)
+    }
 };
 
 function ejecutarBorrarTodo () {
@@ -79,13 +84,32 @@ function ejecutarBackspace () {
     display.textContent = auxiliarOperando;
 };
 
+function teclaApretada (event) {
+    // Si la tecla es un digito o un punto (y no hay ya un punto): 
+    if (parseInt(event.key) + 1 || (event.key === "." && !auxiliarOperando.includes("."))) {
+        popularDisplay(event.key);
+        return;
+    };
+    if (event.key === "+" || event.key === "-" || event.key === "*" || event.key ==="/") {
+        elegirOperacion (event.key);
+        return;
+    };
+    if (event.key === "=" || event.key === "Enter") {
+        ejecutarIgual ();
+        return;
+    };
+};
+
 const display = document.querySelector("#display");
-const digitos = document.querySelectorAll(".digitos button");
 const punto = document.querySelector("#punto");
-digitos.forEach((digito) => digito.addEventListener("click", popularDisplay));
+
+const digitos = document.querySelectorAll(".digitos button");
+digitos.forEach((digito) => digito.addEventListener("click", 
+    function () {popularDisplay (event.target.textContent)}));
 
 const operaciones = document.querySelectorAll(".operacion");
-operaciones.forEach((operacion) => operacion.addEventListener("click", elegirOperacion));
+operaciones.forEach((operacion) => operacion.addEventListener("click", 
+    function () {elegirOperacion (event.target.textContent)}));
 
 const igual = document.querySelector("#igual");
 igual.addEventListener("click", ejecutarIgual);
@@ -98,3 +122,5 @@ borrar.addEventListener("click", ejecutarBorrar);
 
 const backspace = document.querySelector("#backspace");
 backspace.addEventListener("click", ejecutarBackspace);
+
+window.addEventListener("keydown", teclaApretada);
