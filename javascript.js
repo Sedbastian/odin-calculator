@@ -53,6 +53,7 @@ function ejecutarIgual () {
         resultado = parseFloat(primerOperando) / parseFloat(auxiliarOperando);
     };
     auxiliarOperando = "";
+    resultado = resultado.toFixed(2);
     primerOperando = `${resultado}`;
     display.textContent = `${resultado}`;
 };
