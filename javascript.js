@@ -16,6 +16,10 @@ function popularDisplay (event) {
 };
 
 function elegirOperacion (event) {
+    if (punto.disabled === true) {
+        punto.disabled = false;
+        digitos.forEach ((numero) => numero.disabled = false)
+    }
     if (auxiliarOperando !== "" && primerOperando !== "") {
         ejecutarIgual();
         primerOperando = `${resultado}`;
