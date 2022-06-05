@@ -9,21 +9,30 @@ function popularDisplay (event) {
 }
 
 function elegirOperacion (event) {
+    if (auxiliarOperando !== "" && primerOperando !== "") {
+        ejecutarIgual();
+        primerOperando = `${resultado}`;
+        operacionElegida = `${event.target.textContent}`;
+        auxiliarOperando = "";
+        return;
+    };
     operacionElegida = `${event.target.textContent}`;
     primerOperando = auxiliarOperando;
     auxiliarOperando = "";
 }
 
 function ejecutarIgual () {
-    if (operacionElegida === "+") {
+            if (operacionElegida === "+") {
         resultado = parseFloat(primerOperando) + parseFloat(auxiliarOperando);
-    } else if (operacionElegida ==="-") {
+    } else  if (operacionElegida === "-") {
         resultado = parseFloat(primerOperando) - parseFloat(auxiliarOperando);
-    } else if (operacionElegida ==="*") {
+    } else  if (operacionElegida === "*") {
         resultado = parseFloat(primerOperando) * parseFloat(auxiliarOperando);
-    } else if (operacionElegida ==="/") {
+    } else  if (operacionElegida === "/") {
         resultado = parseFloat(primerOperando) / parseFloat(auxiliarOperando);
-    }
+    };
+    auxiliarOperando = "";
+    primerOperando = "";
     display.textContent = `${resultado}`;
 }
 
@@ -31,6 +40,7 @@ function ejecutarBorrarTodo () {
     auxiliarOperando = "";
     primerOperando = "";
     operacionElegida = "";
+    display.textContent = "_";
 }
 
 function ejecutarBorrar () {

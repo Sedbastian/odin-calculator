@@ -1,5 +1,6 @@
 body {
-    font-size: 8vmin;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 12vmin;
 }
 
 #calculadora {
@@ -60,4 +61,8 @@ body {
     border-style: solid;
     border-width: 3px;
     border-color: rebeccapurple; 
+}
+
+button {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
