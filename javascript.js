@@ -17,22 +17,32 @@ function elegirOperacion (event) {
         return;
     };
     operacionElegida = `${event.target.textContent}`;
-    primerOperando = auxiliarOperando;
-    auxiliarOperando = "";
+    // Si primerOperando === "" es xq no se quiere operar sobre un resultado previo
+    if (primerOperando === "") {
+        primerOperando = auxiliarOperando;
+        auxiliarOperando = "";
+        return;
+    }
 }
 
 function ejecutarIgual () {
-            if (operacionElegida === "+") {
+    if (auxiliarOperando === "" || primerOperando === "") {
+        return;
+    } else if (operacionElegida === "/" && auxiliarOperando === "0") {
+        display.textContent = "Infinit8!";
+        auxiliarOperando = "";
+        return;
+    } else if (operacionElegida === "+") {
         resultado = parseFloat(primerOperando) + parseFloat(auxiliarOperando);
-    } else  if (operacionElegida === "-") {
+    } else if (operacionElegida === "-") {
         resultado = parseFloat(primerOperando) - parseFloat(auxiliarOperando);
-    } else  if (operacionElegida === "*") {
+    } else if (operacionElegida === "*") {
         resultado = parseFloat(primerOperando) * parseFloat(auxiliarOperando);
-    } else  if (operacionElegida === "/") {
+    } else if (operacionElegida === "/") {
         resultado = parseFloat(primerOperando) / parseFloat(auxiliarOperando);
     };
     auxiliarOperando = "";
-    primerOperando = "";
+    primerOperando = `${resultado}`;
     display.textContent = `${resultado}`;
 }
 
