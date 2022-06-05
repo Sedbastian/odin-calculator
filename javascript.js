@@ -4,9 +4,16 @@ let primerOperando = "";
 let resultado;
 
 function popularDisplay (event) {
+    if (punto.disabled === true) {
+        digitos.forEach ((numero) => numero.disabled = true);
+    };
+    if (event.target.textContent === ".") {
+        punto.disabled = true;
+    };
     auxiliarOperando = `${auxiliarOperando}` + `${event.target.textContent}`;
     display.textContent = auxiliarOperando;
-}
+    
+};
 
 function elegirOperacion (event) {
     if (auxiliarOperando !== "" && primerOperando !== "") {
@@ -17,13 +24,13 @@ function elegirOperacion (event) {
         return;
     };
     operacionElegida = `${event.target.textContent}`;
-    // Si primerOperando === "" es xq no se quiere operar sobre un resultado previo
+    // Si primerOperando === "" es xq no se quiere operar sobre un resultado previo.
     if (primerOperando === "") {
         primerOperando = auxiliarOperando;
         auxiliarOperando = "";
         return;
     }
-}
+};
 
 function ejecutarIgual () {
     if (auxiliarOperando === "" || primerOperando === "") {
@@ -44,22 +51,23 @@ function ejecutarIgual () {
     auxiliarOperando = "";
     primerOperando = `${resultado}`;
     display.textContent = `${resultado}`;
-}
+};
 
 function ejecutarBorrarTodo () {
     auxiliarOperando = "";
     primerOperando = "";
     operacionElegida = "";
     display.textContent = "_";
-}
+};
 
 function ejecutarBorrar () {
     auxiliarOperando = "";
     display.textContent = "_";
-}
+};
 
 const display = document.querySelector("#display");
 const digitos = document.querySelectorAll(".digitos button");
+const punto = document.querySelector("#punto");
 digitos.forEach((digito) => digito.addEventListener("click", popularDisplay));
 
 const operaciones = document.querySelectorAll(".operacion");
