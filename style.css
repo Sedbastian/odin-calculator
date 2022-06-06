@@ -1,6 +1,8 @@
 body {
+    background-color: black;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 12vmin;
+    font-size: 11vmin;
+    color: coral;
 }
 
 #calculadora {
@@ -41,7 +43,7 @@ body {
 }
 
 .digitos button {
-    font-size: 12vmin;
+    font-size: 11vmin;
     border-style: solid;
     border-width: 3px;
     border-color: yellowgreen;
@@ -57,7 +59,7 @@ body {
 }
 
 #operaciones button {
-    font-size: 8vmin;
+    font-size: 7vmin;
     border-style: solid;
     border-width: 3px;
     border-color: rebeccapurple; 

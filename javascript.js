@@ -59,7 +59,7 @@ function ejecutarIgual () {
     display.textContent = `${resultado}`;
     if (punto.disabled === true) {
         punto.disabled = false;
-        digitos.forEach ((numero) => numero.disabled = false)
+        digitos.forEach ((numero) => numero.disabled = false);
     }
 };
 
@@ -68,15 +68,31 @@ function ejecutarBorrarTodo () {
     primerOperando = "";
     operacionElegida = "";
     display.textContent = "_";
+    if (punto.disabled === true) {
+        punto.disabled = false;
+        digitos.forEach ((numero) => numero.disabled = false);
+    };
 };
 
 function ejecutarBorrar () {
     auxiliarOperando = "";
     display.textContent = "_";
+    if (punto.disabled === true) {
+        punto.disabled = false;
+        digitos.forEach ((numero) => numero.disabled = false);
+    };
 };
 
 function ejecutarBackspace () {
     auxiliarOperando = auxiliarOperando.slice(0, auxiliarOperando.length - 1);
+    if (!auxiliarOperando.includes(".")) {
+        punto.disabled = false;
+        digitos.forEach ((numero) => numero.disabled = false);
+    };
+    if (auxiliarOperando.slice(auxiliarOperando.length - 1) === ".") {
+        digitos.forEach ((numero) => numero.disabled = false);
+        punto.disabled = true;
+    }
     if (auxiliarOperando === "") {
         display.textContent = "_";
         return;
@@ -96,6 +112,18 @@ function teclaApretada (event) {
     };
     if (event.key === "=" || event.key === "Enter") {
         ejecutarIgual ();
+        return;
+    };
+    if (event.key === "Backspace") {
+        ejecutarBackspace ();
+        return;
+    };
+    if (event.key === "Escape   ") {
+        ejecutarBorrarTodo ();
+        return;
+    };
+    if (event.key === "c" || event.key === "C" || event.key === "Delete") {
+        ejecutarBorrar ();
         return;
     };
 };
