@@ -1,7 +1,7 @@
 let auxiliarOperando = "";
 let operacionElegida = "";
 let primerOperando = "";
-let resultado;
+let resultado = "";
 
 function popularDisplay (digitoParaAgregar) {
     if (punto.disabled === true) {
@@ -20,20 +20,29 @@ function elegirOperacion (operacionParaElegir) {
         punto.disabled = false;
         digitos.forEach ((numero) => numero.disabled = false)
     }
-    if (auxiliarOperando !== "" && primerOperando !== "") {
-        ejecutarIgual();
-        primerOperando = `${resultado}`;
-        operacionElegida = `${operacionParaElegir}`;
-        auxiliarOperando = "";
-        return;
-    };
-    operacionElegida = `${operacionParaElegir}`;
-    // Si primerOperando === "" es xq no se quiere operar sobre un resultado previo.
-    if (primerOperando === "") {
+
+    // Cuando hay un primer operando y nada mas:
+    if (auxiliarOperando !== "" && primerOperando === "") {
         primerOperando = auxiliarOperando;
         auxiliarOperando = "";
+        operacionElegida = operacionParaElegir;
         return;
-    }
+    };
+
+    // Cuando se quiere operar sobre un resultado previo:
+    if (auxiliarOperando === "") {
+        primerOperando = resultado;
+        operacionElegida = operacionParaElegir;
+        return;
+    };
+    
+    // Cuando se quiere concatenar operaciones:
+    if (auxiliarOperando !== "" && primerOperando !== "") {
+        ejecutarIgual();
+        primerOperando = resultado;
+        operacionElegida = operacionParaElegir; 
+        return;
+    };
 };
 
 function ejecutarIgual () {
@@ -53,10 +62,11 @@ function ejecutarIgual () {
         resultado = parseFloat(primerOperando) / parseFloat(auxiliarOperando);
     };
     auxiliarOperando = "";
-    resultado = resultado.toFixed(2);
-    primerOperando = `${resultado}`;
+    primerOperando = "";
     operacionElegida = "";
+    resultado = resultado.toFixed(2);
     display.textContent = `${resultado}`;
+    
     if (punto.disabled === true) {
         punto.disabled = false;
         digitos.forEach ((numero) => numero.disabled = false);
