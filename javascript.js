@@ -111,7 +111,6 @@ function ejecutarBackspace () {
 };
 
 function teclaApretada (event) {
-    event.preventDefault();
     // Si la tecla es un digito o un punto (y no hay ya un punto): 
     if (parseInt(event.key) + 1 || (event.key === "." && !auxiliarOperando.includes("."))) {
         popularDisplay(event.key);
@@ -122,6 +121,7 @@ function teclaApretada (event) {
         return;
     };
     if (event.key === "=" || event.key === "Enter") {
+        event.preventDefault();
         ejecutarIgual ();
         return;
     };
