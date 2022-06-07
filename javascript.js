@@ -111,6 +111,7 @@ function ejecutarBackspace () {
 };
 
 function teclaApretada (event) {
+    console.log(event.key);
     // Si la tecla es un digito o un punto (y no hay ya un punto): 
     if (parseInt(event.key) + 1 || (event.key === "." && !auxiliarOperando.includes("."))) {
         popularDisplay(event.key);
@@ -128,7 +129,7 @@ function teclaApretada (event) {
         ejecutarBackspace ();
         return;
     };
-    if (event.key === "Escape   ") {
+    if (event.key === "Escape") {
         ejecutarBorrarTodo ();
         return;
     };

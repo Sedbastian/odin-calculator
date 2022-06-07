@@ -1,8 +1,8 @@
 body {
     background-color: black;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 11vmin;
-    color: coral;
+    font-size: 12vmin;
+    color: green;
 }
 
 #calculadora {
@@ -13,15 +13,18 @@ body {
 
 #display {
     border-style: solid;
-    border-width: 3px;
-    border-color: violet;  
+    border-width: 1vmin;
+    border-color: rgb(64, 0, 128);  
+    border-radius: 2vmin; 
 }
 
 #teclasYoperaciones {
     display:flex;
     border-style: solid;
-    border-width: 3px;
-    border-color: crimson; 
+    border-width: 1vmin;
+    border-color: rgb(48, 0, 96); 
+    border-radius: 2vmin; 
+    background-color: rgb(24, 0, 48);
 }
 
 #teclas {
@@ -29,42 +32,72 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-style: solid;
-    border-width: 3px;
-    border-color: tomato; 
 }
 
 .digitos {
     display: flex;
     justify-content: center;
-    border-style: solid;
-    border-width: 3px;
-    border-color: orangered;  
 }
 
 .digitos button {
     font-size: 11vmin;
-    border-style: solid;
-    border-width: 3px;
-    border-color: yellowgreen;
+    border-width: 1vmin;
+    border-color: rgb(109, 146, 35);
+    border-radius: 2vmin;
+    margin: 1vmin;
+    width: 1em;
+}
+
+.digitos button#cero {
+    width: 2em;
 }
 
 #operaciones {
     display: flex;
     flex-direction: column;
     text-align: center;
-    border-style: solid;
-    border-width: 3px;
-    border-color: green; 
 }
 
 #operaciones button {
-    font-size: 7vmin;
-    border-style: solid;
-    border-width: 3px;
-    border-color: rebeccapurple; 
+    font-size: 5vmin;
+    border-width: 1vmin;
+    border-color: rebeccapurple;
+    border-radius: 2vmin;
+    margin: 0.5vmin;
 }
 
 button {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: black;
+    border-radius: 2vmin;
+    border-style: outset;
+}
+
+button:disabled {
+    border-style: inset;
+    background-color: rgb(32, 32, 32);
+}
+
+.digitos button {
+    color: rgb(85, 143, 85);
+}
+
+button.operacion {
+    color: olivedrab;
+}
+
+button#borrarTodo {
+    color: crimson;
+}
+
+button#borrar {
+    color: brown;
+}
+
+button#backspace {
+    color: chocolate;
+}
+
+button#igual {
+    color: darkmagenta;
 }
