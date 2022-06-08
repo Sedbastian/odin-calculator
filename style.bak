@@ -1,36 +1,29 @@
 body {
     background-color: black;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 12vmin;
     color: green;
-    margin: 0;
 }
 
 #calculadora {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vmin;
-    font-size: 13vmin;
 }
 
 #display {
-    flex-grow: 0;
-    font-size: 100%;
     border-style: solid;
-    border-width: 0.08em;
+    border-width: 1vmin;
     border-color: rgb(64, 0, 128);  
-    border-radius: 0.2em; 
-    text-align: right;
+    border-radius: 2vmin; 
 }
 
 #teclasYoperaciones {
-    display: flex;
-    flex-grow: 1;
-    max-height: 85%;
+    display:flex;
     border-style: solid;
-    border-width: 0.08em;
+    border-width: 1vmin;
     border-color: rgb(48, 0, 96); 
-    border-radius: 0.2em; 
+    border-radius: 2vmin; 
     background-color: rgb(24, 0, 48);
 }
 
@@ -44,15 +37,14 @@ body {
 .digitos {
     display: flex;
     justify-content: center;
-    flex-grow: 1;
 }
 
 .digitos button {
-    font-size: 80%;
-    border-width: 0.08em;
+    font-size: 11vmin;
+    border-width: 1vmin;
     border-color: rgb(109, 146, 35);
-    border-radius: 0.2em;
-    margin: 0.04em;
+    border-radius: 2vmin;
+    margin: 1vmin;
     width: 1em;
 }
 
@@ -67,16 +59,17 @@ body {
 }
 
 #operaciones button {
-    font-size: 40%;
-    border-width: 0.15em;
+    font-size: 5vmin;
+    border-width: 1vmin;
     border-color: rebeccapurple;
-    border-radius: 0.4em;
-    margin: 0.15em;
+    border-radius: 2vmin;
+    margin: 0.5vmin;
 }
 
 button {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: black;
+    border-radius: 2vmin;
     border-style: outset;
 }
 
